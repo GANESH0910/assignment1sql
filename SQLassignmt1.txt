@@ -1,0 +1,69 @@
+1. SELECT*FROM Emptable WHERE DeptNo=10 OR DeptNo=30;
+
+2. SELECT Depttable.Dname,Depttable.Loc, COUNT(Depttable.DeptNo) AS numberOfEmp
+   FROM Emptable LEFT JOIN Depttable ON Emptable.DeptNo=Depttable.DeptNo
+   GROUP BY Dname WHERE numberOfEmp >1 ;.
+
+3. SELECT*FROM Emptable WHERE Ename LIKE 's%';
+
+4. SELECT*FROM Emptable WHERE Hire_Date >2018;
+
+5. SELECT REPLACE(Ename,'a',#) FROM Emptable;
+
+6. SELECT Emptable.Ename, Manager.Ename AS ManagerName
+   FROM Emptable SELF JOIN Emptable Manager
+   ON Emptable.Mgr= Manager.EmpNO;
+
+7. SELECT Depttable.Dname, SUM(Emptable.Sal)  AS TotalSalary FROM Emptable INNER JOIN Depttable ON Emptable.DeptNo=Depttable.DeptNo GROUP BY Dname ;
+
+8. SELECT Emptable.EmpNo,Emptable.Ename,Emptable.Sal,Emptable.Hire_Date,Emptable.Commission,Emptable.DeptNo,Emptable.Mgr,Depttable.Dname,Depttable.Loc
+   FROM Depttable FULL OUTER JOIN Emptable ON Emptable.DeptNo=Depttable.DeptNo ;
+
+9. UPDATE Emptable
+   SET Sal=0.1*"Sal"+"Sal" ;
+
+10. SELECT Emptable.Ename,Depttable.Loc
+    FROM Emptable INNER JOIN Depttable ON Emptable.DeptNo=Depttable.DeptNo
+    WHERE NOT Loc='Chennai';
+
+11. SELECT Emptable.EmpNo, ("Sal"+"Commission") AS grosssalary FROM Emptable;
+
+12. ALTER TABLE Emptable ALTER COLUMN Ename varchar(250);
+
+13. SELECT DATETIME('now');
+
+14. CREATE TABLE Student (id INTEGER PRIMARY KEY, Name text, Age INTEGER, RollNo INTEGER,ContactNo INTEGER);
+
+15. SELECT COUNT(Ename) FROM Emptable WHERE Sal>10000;
+
+16. 1) SELECT MIN(Sal) AS MinSalary FROM Emptable;
+    2) SELECT MAX(Sal) AS MaxSalary FROM Emptable;
+    3) SELECT AVG(Sal) AS AvgSalary FROM Emptable;
+
+17. SELECT Depttable.Loc, COUNT(Depttable.DeptNo) AS numberOfEmp
+    FROM Emptable LEFT JOIN Depttable ON Emptable.DeptNo=Depttable.DeptNo
+    GROUP BY Loc;
+
+18. SELECT*FROM Emptable ORDER BY Ename DESC;
+
+19. SELECT * INTO EMP_BKP FROM EMP;
+
+20.
+
+21. SELECT*FROM Emptable WHERE Ename LIKE 's%';
+
+22. SELECT Emptable.Ename,Depttable.Loc
+    FROM Emptable INNER JOIN Depttable ON Emptable.DeptNo=Depttable.DeptNo
+    WHERE Loc='Bangaloere';
+
+23. SELECT*FROM Emptable WHERE Ename LIKE '[a-k]%';
+
+24. SELECT Emptable.Ename, Manager.Ename AS ManagerName
+    FROM Emptable SELF JOIN Emptable Manager
+    ON Emptable.Mgr= Manager.EmpNO
+    WHERE Manager.Ename= 'Stefen';
+
+25. SELECT Manager.Ename, COUNT(Emptable.Ename) AS TeamMemebrs
+    FROM Emptable SELF JOIN Emptable Manager
+    ON Emptable.Mgr= Manager.EmpNO
+    GROUP BY Manager.Ename ;
